@@ -1,2 +1,2 @@
-# TLOG3030
+# Bachloroppgave - Gruppe 1
 Bachelor Hei Hei

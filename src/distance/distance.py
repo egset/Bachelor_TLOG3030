@@ -6,9 +6,11 @@ from geopy.distance import geodesic # Beregner korteste avstand på mellom to pu
 "Klassen Location lager et objekt for et geografisk sted med navn og koordinater. "
 "Koordinatene kan skrives inn direkte, eller hentes via geokoding basert på navnet."
 
+"Denne filen tar IKKE hensyn til pauser og hviletider i estimert reisetid."
+
 
 # Konstruktøren
-class Location:
+class Distance:
     def __init__(self, name, latitude=None, longitude=None):
         self.name = name
         self.latitude = latitude
@@ -36,18 +38,19 @@ class Location:
     
 
     def estimated_travel_time(self, other_location,
-                              road_factor = 1.5,
-                              avg_speed = 75,
-                              std_speed = 8,
-                              simulations = 1000):
+                              road_factor = 1.5, # Forholdet mellom veiaavstand og luftlinjeavstand
+                              avg_speed = 75, # Gjennomsnittshastighet (km/h) i Norge
+                              std_speed = 8, # Standardavvik for hastighet (km/h)
+                              simulations = 10_000): # Antall simuleringer for Monte Carlo
+                                
         
-        luftlinje = self.distance_to(other_location)
-        veiavstand = luftlinje * road_factor
+        air_distance = self.distance_to(other_location)
+        road_distance = air_distance * road_factor
 
-        hastigheter = np.random.normal(loc=avg_speed, scale=std_speed, size=simulations)
-        hastigheter = hastigheter[hastigheter > 30]
+        velocity = np.random.normal(loc=avg_speed, scale=std_speed, size=simulations)
+        velocity = velocity[velocity > 30]
 
-        tider = veiavstand / hastigheter
+        tider = road_distance / velocity
 
         return {
             "mean_hours": np.mean(tider),
@@ -55,13 +58,7 @@ class Location:
             "min_hours": np.min(tider),
             "max_hours": np.max(tider)
         }
-    
 
-lillehammer = Location("Lillehammer", 60.5825, 11.0742)
-bjerkvik = Location("Bjerkvik", 68.5468, 17.5757)
-
-resultat = lillehammer.estimated_travel_time(bjerkvik)
-print(f"Estimated travel time from Lillehammer to Bjerkvik: {resultat['mean_hours']:.2f} hours (± {resultat['std_hours']:.2f} hours)")
 
 
     

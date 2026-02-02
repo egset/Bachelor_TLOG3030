@@ -1,9 +1,13 @@
-from geopy.geocoders import Nominatim
-from geopy.distance import geodesic
+import numpy as np
+from geopy.geocoders import Nominatim # Gjør stednavn om til koordinater
+from geopy.distance import geodesic # Beregner korteste avstand på mellom to punkter
 
-# Denne klassen lagrer byer og deres posisjon.
-# Mulig å legge til flere funksjoner senere.
 
+"Klassen Location lager et objekt for et geografisk sted med navn og koordinater. "
+"Koordinatene kan skrives inn direkte, eller hentes via geokoding basert på navnet."
+
+
+# Konstruktøren
 class Location:
     def __init__(self, name, latitude=None, longitude=None):
         self.name = name
@@ -12,28 +16,55 @@ class Location:
         if latitude is None or longitude is None:
             self.geocode()
 
+
+    # Henter koordinater basert på stednavn dersom de ikke er oppgitt. Bruker OpenStreetMap via geopy.
     def geocode(self):
-        geolocator = Nominatim(user_agent="location_app", timeout=10)
+        geolocator = Nominatim(user_agent="location_app", timeout=10) 
         location = geolocator.geocode(self.name)
+
         if location is None:
-            raise ValueError(f"Fant ikke koordinater for {self.name}")
+            raise ValueError(f"Coordinates for {self.name} not found")
         self.latitude = location.latitude
         self.longitude = location.longitude
+        
 
-
-    # Regner ut avstanden mellom to Location-objekter
+   # Regner avstanden i kilometer mellom to Location-objekter.
     def distance_to(self, other_location) -> float:
-        """
-        Beregn avstanden til et annet Location-objekt i kilometer.
-        """
         point1 = (self.latitude, self.longitude)
-        point2 = (other_location.latitude, other_location.longitude)
+        point2  = (other_location.latitude, other_location.longitude)
         return geodesic(point1, point2).kilometers
+    
+
+    def estimated_travel_time(self, other_location,
+                              road_factor = 1.5,
+                              avg_speed = 75,
+                              std_speed = 8,
+                              simulations = 1000):
+        
+        luftlinje = self.distance_to(other_location)
+        veiavstand = luftlinje * road_factor
+
+        hastigheter = np.random.normal(loc=avg_speed, scale=std_speed, size=simulations)
+        hastigheter = hastigheter[hastigheter > 30]
+
+        tider = veiavstand / hastigheter
+
+        return {
+            "mean_hours": np.mean(tider),
+            "std_hours": np.std(tider),
+            "min_hours": np.min(tider),
+            "max_hours": np.max(tider)
+        }
+    
+
+lillehammer = Location("Lillehammer", 60.5825, 11.0742)
+bjerkvik = Location("Bjerkvik", 68.5468, 17.5757)
+
+resultat = lillehammer.estimated_travel_time(bjerkvik)
+print(f"Estimated travel time from Lillehammer to Bjerkvik: {resultat['mean_hours']:.2f} hours (± {resultat['std_hours']:.2f} hours)")
 
 
-# Hardkodede koordinater for testing uten nett
-oslo = Location("Oslo", 59.9139, 10.7522)
-bergen = Location("Bergen", 60.3913, 5.3221)
+    
 
-dist = oslo.distance_to(bergen)
-print(f"Avstanden mellom {oslo.name} og {bergen.name} er ca {dist:.2f} km i luftlinje.")
+
+        

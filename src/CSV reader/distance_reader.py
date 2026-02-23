@@ -29,3 +29,5 @@ if df is not None:
     else:
         print("Feil: En av lokasjonene finnes ikke i matrisen.")
 
+
+

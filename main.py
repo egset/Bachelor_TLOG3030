@@ -2,7 +2,7 @@ from src.location.distance import Distance
 
 def main():
     # Opprett to lager/lokasjoner
-    warehouse1 = Distance("Bjerkvik", latitude=68.55, longitude=17.55)
+    warehouse1 = Distance("Stryn", latitude=61.83, longitude=6.78)
     warehouse2 = Distance("Oslo", latitude=59.91, longitude=10.75)
 
     # Legg til komponenter i lager 1

@@ -1,0 +1,63 @@
+MaskinNr,Maskinens navn,Sted,Vedlikeholds stopp per år,Produksjons effektivitet,Tilgjengelighet personell,Kostnad per time
+M1,Fres 5 akser,Sted A,3,100,40,1100
+M2,Dreiebenk,Sted A,3,100,40,800
+M3,Skjerebord,Sted A,2,80,30,50
+A1,EOS SLM,Sted A,4,100,5,2000
+A2,EOS SLS,Sted A,4,100,5,600
+A3,FDM 1,Sted A,1,100,5,200
+A3,FDM 2,Sted A,1,100,5,200
+A3,FDM 3,Sted A,1,100,5,200
+A3,FDM 4,Sted A,1,100,5,200
+A3,FDM 5,Sted A,1,100,5,200
+A3,FDM 6,Sted A,1,100,5,200
+A3,FDM 7,Sted A,1,100,5,200
+A3,FDM 8,Sted A,1,100,5,200
+A3,FDM 9,Sted A,1,100,5,200
+A3,FDM 10,Sted A,1,100,5,200
+M1,Fres 5 akser,Sted F,3,100,40,1100
+M2,Dreiebenk,Sted F,3,100,40,800
+M3,Skjerebord,Sted F,2,80,30,50
+A3,FDM 1,Sted F,1,100,5,200
+A3,FDM 2,Sted F,1,100,5,200
+A3,FDM 3,Sted F,1,100,5,200
+M1,Fres 5 akser,Sted E,3,100,40,1100
+M2,Dreiebenk,Sted E,3,100,40,800
+M3,Skjerebord,Sted E,2,80,30,50
+A3,FDM 1,Sted E,1,100,5,200
+A3,FDM 2,Sted E,1,100,5,200
+M1,Fres 5 akser,Sted D,3,100,40,1100
+M2,Dreiebenk,Sted D,3,100,40,800
+M3,Skjerebord,Sted D,2,80,30,50
+A3,FDM 1,Sted D,1,100,5,200
+A3,FDM 2,Sted D,1,100,5,200
+A3,FDM 3,Sted D,1,100,5,200
+M1,Fres 5 akser,Sted C,3,100,40,1100
+M2,Dreiebenk,Sted C,3,100,40,800
+M3,Skjerebord,Sted C,2,80,30,50
+A3,FDM 1,Sted C,1,100,5,200
+A3,FDM 2,Sted C,1,100,5,200
+A3,FDM 3,Sted C,1,100,5,200
+M1,Fres 5 akser,Sted B,3,100,40,1100
+M2,Dreiebenk,Sted B,3,100,40,800
+M3,Skjerebord,Sted B,2,80,30,50
+A3,FDM 1,Sted B,1,100,5,200
+A3,FDM 2,Sted B,1,100,5,200
+A3,FDM 3,Sted B,1,100,5,200
+M1,Fres 5 akser,Sted G,10,50,40,1100
+M2,Dreiebenk,Sted G,4,70,40,800
+M3,Skjerebord,Sted G,2,80,30,50
+A3,FDM 1,Sted G,1,100,5,200
+A3,FDM 2,Sted G,1,100,5,200
+A3,FDM 3,Sted G,1,100,5,200
+M1,Fres 5 akser,Sted H,3,100,40,1100
+M2,Dreiebenk,Sted H,3,100,40,800
+M3,Skjerebord,Sted H,2,80,30,50
+A3,FDM 1,Sted H,1,100,5,200
+A3,FDM 2,Sted H,1,100,5,200
+A3,FDM 3,Sted H,1,100,5,200
+M1,Fres 5 akser,Sted I,3,100,40,1100
+M2,Dreiebenk,Sted I,3,100,40,800
+M3,Skjerebord,Sted I,2,80,30,50
+A3,FDM 1,Sted I,1,100,5,200
+A3,FDM 2,Sted I,1,100,5,200
+A3,FDM 3,Sted I,1,100,5,200

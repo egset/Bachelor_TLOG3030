@@ -1,9 +1,3 @@
-numpy 
-matplotlib
-pandas
-geopy
-scipy
-
 #Tilgjengelige bibliotek i Forsvaret
 contourpy==1.3.3
 cycler==0.12.1

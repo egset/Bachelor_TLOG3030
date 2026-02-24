@@ -1,7 +1,6 @@
 
 class Machine:
-    def __init__(self, code, name, maintenance_stop, efficiency,
-                 personnel_availability, cost_per_hour):
+    def __init__(self, code, name, maintenance_stop, efficiency, personnel_availability, cost_per_hour):
         self.code = code
         self.name = name
         self.maintenance_stop = int(maintenance_stop)

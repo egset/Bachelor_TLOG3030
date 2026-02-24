@@ -1,21 +1,25 @@
+from src.vehicle import Vehicle
+from src.machine import Machine
+
 
 class Location:
     def __init__(self, name):
         self.name = name
-        self.vehicle_counts = {}  # {"MB450": 70, ...}
-        self.machines = []        # liste av Machine-objekter
+        self.vehicle_counts = {}   # {"MB450": 70}
+        self.vehicles = {}         # {"MB450": Vehicle-objekt}
+        self.machines = []
 
-    def add_vehicle(self, vehicle_name, amount):
-        self.vehicle_counts[vehicle_name] = self.vehicle_counts.get(vehicle_name, 0) + int(amount)
 
-    def add_machine(self, machine):
-        self.machines.append(machine)
+def get_vehicle(self, vehicle_name):
+        return self.vehicles.get(vehicle_name)
 
-    def machine_codes(self):
-        return {m.code for m in self.machines}
 
-    def can_repair(self, part):
-        return part.required_machines().issubset(self.machine_codes())
+def get_machine(self, machine_code):
+        for machine in self.machines:
+            if machine.code == machine_code:
+                return machine
+        return None
+   
 
-    def __repr__(self):
-        return f"Location({self.name}, machines={len(self.machines)})"
+
+

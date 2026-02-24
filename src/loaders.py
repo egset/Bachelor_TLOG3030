@@ -8,6 +8,10 @@ from src.part import Part
 from src.vehicle import Vehicle
 
 
+"Veit ikke helt hva denne skal gjøre. La den stå så lenge"
+
+
+
 # prosjektrot = mappen som inneholder "src" og "data-ugradert"
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data-ugradert"

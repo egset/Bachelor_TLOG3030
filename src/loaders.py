@@ -5,7 +5,7 @@ import csv
 from src.machine import Machine
 from src.location import Location
 from src.part import Part
-from vehicle import Vehicle
+from src.vehicle import Vehicle
 
 
 # prosjektrot = mappen som inneholder "src" og "data-ugradert"

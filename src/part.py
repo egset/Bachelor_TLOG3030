@@ -1,13 +1,18 @@
 
-
 class Part:
-    def __init__(self, material_nr, name, vehicle, machine, workshop_time, price):
+    def __init__(self, material_nr, name, vehicle, machine_code,
+                 workshop_time, price):
         self.material_nr = int(material_nr)
         self.name = name
-        self.vehicle = vehicle          # f.eks. "MB450"
-        self.machine = machine          # f.eks. "A1 & M2"
-        self.workshop_time = float(workshop_time)  # "Tid i verksted"
-        self.price = float(price)       # "Innkjøpspris"
+        self.vehicle = vehicle
+        self.machine_code = machine_code
+        self.workshop_time = float(workshop_time)
+        self.price = float(price)
 
-    def __repr__(self):
-        return f"Part({self.material_nr}, {self.name}, vehicle={self.vehicle})"
+    def required_machines(self):
+        if not self.machine_code:
+            return set()
+
+        # Fjern mellomrom og splitt på "&"
+        parts = self.machine_code.split("&")
+        return {p.strip() for p in parts}
